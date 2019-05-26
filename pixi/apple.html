@@ -35,21 +35,11 @@
         //Sprite zur stage hinzugefügt
         app.stage.addChild(apple);
 
-        //Text
-        var appleclicks = 0;
-        const text = new PIXI.Text("Apfel: " + appleclicks, { fill: 0xffffff });
-        text.x = apple.x;
-        text.y = apple.y;
-
-        app.stage.addChild(text);
-
         // Ticker
         app.ticker.add(onUpdate);
 
         function onClick() {
             apple.rotation += 2;
-            appleclicks++;
-            text.text = "Apfel: " + appleclicks;
         }
 
         function onUpdate() {
