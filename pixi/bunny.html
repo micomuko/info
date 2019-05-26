@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<head>
+    <title>PIXI JS DEMO</title>
+</head>
+
+<body>
+    <!-- PixiJS importieren/laden -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.5.1/pixi.min.js"></script>
+
+    <!-- Unser Javascript -->
+    <script>
+        const app = new PIXI.Application();
+        document.body.appendChild(app.view);
+
+        const apple = PIXI.Sprite.from('apfel.png');
+
+        // Set the initial position
+        apple.anchor.set(0.5);
+        apple.x = app.screen.width / 2;
+        apple.y = app.screen.height / 2;
+
+        apple.scale.x = 0.25;
+        apple.scale.y = 0.25;
+
+        // Opt-in to interactivity
+        apple.interactive = true;
+
+        // Shows hand cursor
+        apple.buttonMode = true;
+
+        // Pointers normalize touch and mouse
+        apple.on('pointerdown', onClick);
+
+        //Sprite zur stage hinzugefügt
+        app.stage.addChild(apple);
+
+        //Text
+        var appleclicks = 0;
+        const text = new PIXI.Text("Apfel: " + appleclicks, { fill: 0xffffff });
+        text.x = apple.x;
+        text.y = apple.y;
+
+        app.stage.addChild(text);
+
+        // Ticker
+        app.ticker.add(onUpdate);
+
+        function onClick() {
+            apple.rotation += 2;
+            appleclicks++;
+            text.text = "Apfel: " + appleclicks;
+        }
+
+        function onUpdate() {
+            apple.rotation -= 0.05;
+        }
+
+    </script>
+
+</body>
+
+</html>

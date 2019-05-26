@@ -1,0 +1,8 @@
+//JAVA - statisch
+int a = 10;
+boolean b = true;
+double f = 10.5;
+int[] arr = {0, 3, 44, 1}
+
+a = false; //ERROR
+arr[2] = 6.6; //ERROR
